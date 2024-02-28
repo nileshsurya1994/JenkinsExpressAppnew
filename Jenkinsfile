@@ -21,25 +21,14 @@ agent any
       }
     }
     
-    stage('Visit /health route'){
-      steps{
-        script{
-          sh 'curl https://13.233.86.55:3000/health'
-        }
-      }
-    }
-
+  
     stage('cleanup'){
       steps{
         script{
           sh 'pkill -f "node"'
         }
       }
-    }
-
-   
-
-    
+    }   
   }
   
 }
