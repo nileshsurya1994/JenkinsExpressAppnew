@@ -3,9 +3,10 @@ agent any
   stages{
     stage('Install Packages'){
       steps{
-        script{tools{
+        tools{
         nodejs "nodejs"
       }
+        script{
           sh 'yarn install'
         }
       }
