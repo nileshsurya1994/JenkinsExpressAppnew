@@ -38,3 +38,7 @@ agent any
   }
   
 }
+
+tools {
+  nodejs "nodejs"
+}
