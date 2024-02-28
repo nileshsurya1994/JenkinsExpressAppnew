@@ -24,7 +24,7 @@ agent any
     stage('Visit /health route'){
       steps{
         script{
-          sh 'curl http://localhost:3000/health'
+          sh 'curl http://13.233.86.55:3000/health'
         }
       }
     }
