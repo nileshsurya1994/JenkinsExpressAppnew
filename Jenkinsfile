@@ -1,46 +1,40 @@
-pipeline{
-agent any
-  tools{
+pipeline {
+    agent any
+    tools {
         nodejs "nodejs"
-      }
-  stages{
-    stage('Install Packages'){
-      steps{
-        script{
-          sh 'yarn install'
-        }
-      }
     }
-    
-    stage('Run the app'){
-      steps{
-        script{
-          sh 'yarn start &'
-          sleep 5
+    stages {
+        stage('Install Packages') {
+            steps {
+                script {
+                    sh 'yarn install'
+                }
+            }
         }
-      }
-    }
-    
-    stage('Visit /health route'){
-      steps{
-        script{
-          sh 'curl https://13.233.86.55:3000/health'
-        }
-      }
-    }
 
-    stage('cleanup'){
-      steps{
-        script{
-          sh 'pkill -f "node"'
+        stage('Run the App') {
+            steps {
+                script {
+                    sh 'yarn start &'
+                    sleep 5
+                }
+            }
         }
-      }
+
+        stage('Visit /health route') {
+            steps {
+                script {
+                    sh 'curl http://localhost:3000/health'
+                }
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                script {
+                    sh 'pkill -f "node"'
+                }
+            }
+        }
     }
-
-   
-
-    
-  }
-  
 }
-
